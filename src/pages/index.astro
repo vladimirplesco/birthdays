@@ -5,8 +5,13 @@ const people = [
 {first_name:'Елена', last_name:'Плешко', birthday: '18.05.1988'},
 ];
 var date = new Date();
-var month = date.getMonth();
-var day = date.getDate();
+// var month = date.getMonth() + 1;
+// var day = date.getDate();
+var month = 4;
+var day = 17;
+month = month > 9 ? month : '0' + month;
+day = day > 9 ? day : '0' + day;
+var arr = [day, month];
 ---
 
 <html lang="en">
@@ -18,9 +23,10 @@ var day = date.getDate();
 		<title>Birthdays</title>
 	</head>
 	<body>
+		<div>{month}</div>
 		<h1>Birthdays</h1>
 		<ul role="list">
-			{(people.filter((person) => (person.birthday.split('.')[0] === '17' && person.birthday.split('.')[1] === '04'))).map((person) => <li>
+			{(people.filter(((person) => (person.birthday.split('.')[0] === '17' && person.birthday.split('.')[1] === '04')), arr=[{day}, {month}])).map((person) => <li>
 				<div">
 				<tr>
 					<td>{person.first_name}</td>
