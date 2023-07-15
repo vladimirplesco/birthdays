@@ -40,40 +40,20 @@ var arr = [day, month];
 <script>
 	import List from "list.js";
 	var options = {
-  valueNames: [ 'name', 'born' ]
+  valueNames: [ 'name', 'birthday'],
+  item: '<li><h3 class="name"></h3><p class="birthday"></p></li>'
 };
-
-var userList = new List('users', options);
+var values = [
+{name:'Алла Плешко', birthday: '17.04.1954'},
+{name:'Владимир Плешко', birthday: '17.04.1951'},
+{name:'Елена Плешко', birthday: '18.05.1988'},
+];
+var userList = new List('users', options, values);
 
 </script>
 <div id="users">
-  <input class="search" placeholder="Search" />
-  <button class="sort" data-sort="name">
-    Sort by name
-  </button>
-
-  <ul class="list">
-    <li>
-      <h3 class="name">Jonny Stromberg</h3>
-      <p class="born">1986</p>
-    </li>
-    <li>
-      <h3 class="name">Jonas Arnklint</h3>
-      <p class="born">1985</p>
-    </li>
-    <li>
-      <h3 class="name">Martina Elm</h3>
-      <p class="born">1986</p>
-    </li>
-    <li>
-      <h3 class="name">Gustaf Lindqvist</h3>
-      <p class="born">1983</p>
-    </li>
-  </ul>
-
+  <ul class="list"></ul>
 </div>
-<!-- <script defer src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script> -->
-<!-- <script defer src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script> -->
 <style>
 
 
