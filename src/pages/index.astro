@@ -39,16 +39,35 @@ var arr = [day, month];
 		</ul> -->
 <script>
 	import List from "list.js";
+  function isBirthday(value) {
+    if (typeof value !== 'object') {
+        return false;
+    }
+    const birthParts = value.birthday.split(".");
+    const birthMonth = parseInt(birthParts[1]);
+    const birthDay = parseInt(birthParts[0]);
+    const birthOffset = birthMonth * 100 + birthDay;
+
+    const nowDate = new Date();
+    const nowMonth = nowDate.getMonth() + 1;
+    const nowDay = nowDate.getDate();
+    const nowOffset = nowMonth * 100 + nowDay;
+
+    return birthOffset === nowOffset;
+  }
+
 	var options = {
   valueNames: [ 'name', 'birthday'],
   item: '<li><h3 class="name"></h3><p class="birthday"></p></li>'
 };
 var values = [
-{name:'Алла Плешко', birthday: '17.04.1954'},
-{name:'Владимир Плешко', birthday: '17.04.1951'},
+{name:'Алла Плешко', birthday: '16.07.1954'},
+{name:'Владимир Плешко', birthday: '16.07.1951'},
 {name:'Елена Плешко', birthday: '18.05.1988'},
 ];
-var userList = new List('users', options, values);
+
+var newValues = values.filter(isBirthday);
+var userList = new List('users', options, newValues);
 
 </script>
 <div id="users">
