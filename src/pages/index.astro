@@ -10,8 +10,11 @@
 		<title>Birthdays</title>
 	</head>
 	<body>
+    <h2>В этот день родились:</h2>
 <script>
 	import List from "list.js";
+  import birth from './birth.json' assert {'content-type': 'application/json'};
+
   function isBirthday(value) {
     if (typeof value !== 'object') {
         return false;
@@ -33,14 +36,9 @@
   valueNames: [ 'name', 'birthday'],
   item: '<li><h3 class="name"></h3><p class="birthday"></p></li>'
 };
-var values = [
-{name:'Алла Плешко', birthday: '16.07.1954'},
-{name:'Владимир Плешко', birthday: '16.07.1951'},
-{name:'Елена Плешко', birthday: '18.05.1988'},
-];
 
-var newValues = values.filter(isBirthday);
-var userList = new List('users', options, newValues);
+var values = birth.filter(isBirthday);
+var userList = new List('users', options, values);
 
 </script>
 <div id="users">
