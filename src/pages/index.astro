@@ -1,17 +1,4 @@
 ---
-const people = [
-{first_name:'Алла', last_name:'Плешко', birthday: '17.04.1954'},
-{first_name:'Владимир', last_name:'Плешко', birthday: '17.04.1951'},
-{first_name:'Елена', last_name:'Плешко', birthday: '18.05.1988'},
-];
-var date = new Date();
-// var month = date.getMonth() + 1;
-// var day = date.getDate();
-var month = 4;
-var day = 17;
-month = month > 9 ? month : '0' + month;
-day = day > 9 ? day : '0' + day;
-var arr = [day, month];
 ---
 
 <html lang="en">
@@ -23,20 +10,6 @@ var arr = [day, month];
 		<title>Birthdays</title>
 	</head>
 	<body>
-		<!-- <div>{month}</div>
-		<div>{day}</div>
-		<h1>Birthdays</h1>
-		<ul role="list">
-			{(people.filter(((person) => (person.birthday.split('.')[0] === '17' && person.birthday.split('.')[1] === '04')), arr=[{day}, {month}])).map((person) => <li>
-				<div">
-				<tr>
-					<td>{person.first_name}</td>
-					<td>{person.last_name}</td>
-					<td>{person.birthday}</td>
-				</tr>
-				</div>
-			</li>)}
-		</ul> -->
 <script>
 	import List from "list.js";
   function isBirthday(value) {
