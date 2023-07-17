@@ -17,24 +17,7 @@ import '../styles/global.css';
 	import List from "list.js";
   import birth from './birth.json' assert {'content-type': 'application/json'};
 
-  function isBirthday(value) {
-    if (typeof value !== 'object') {
-        return false;
-    }
-    const birthParts = value.birthday.split(".");
-    const birthMonth = parseInt(birthParts[1]);
-    const birthDay = parseInt(birthParts[0]);
-    const birthOffset = birthMonth * 100 + birthDay;
-
-    const nowDate = new Date();
-    const nowMonth = nowDate.getMonth() + 1;
-    const nowDay = nowDate.getDate();
-    const nowOffset = nowMonth * 100 + nowDay;
-
-    return birthOffset === nowOffset;
-  }
-
-	var options = {
+  var options = {
   valueNames: [ 'name', 'birthday'],
   // item: '<li><h3 class="name"></h3><p class="birthday"></p></li>'
   item: '<tbody class="list"><tr><td class="name"></td><td class="birthday"></td></tr></tbody>'
