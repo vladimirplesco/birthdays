@@ -10,9 +10,9 @@ import '../styles/global.css';
 		<title>Birthdays</title>
 	</head>
 	<body>
+    <a href="/">Сегодня</a>
     <a href="/month/">В этом месяце</a>
-    <a href="/all/">Все</a>
-    <h2>В этот день родились:</h2>
+    <h2>Все дни рождения</h2>
 <script>
 	import List from "list.js";
   import birth from './birth.json' assert {'content-type': 'application/json'};
@@ -36,11 +36,11 @@ import '../styles/global.css';
 
 	var options = {
   valueNames: [ 'name', 'birthday'],
-  item: '<li><h3 class="name"></h3><p class="birthday"></p></li>'
+  // item: '<li><h3 class="name"></h3><p class="birthday"></p></li>'
+  item: '<tbody class="list"><tr><td class="name"></td><td class="birthday"></td></tr></tbody>'
 };
 
-var values = birth.filter(isBirthday);
-var userList = new List('users', options, values);
+var userList = new List('users', options, birth);
 
 </script>
 <div id="users">

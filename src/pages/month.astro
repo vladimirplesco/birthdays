@@ -10,9 +10,9 @@ import '../styles/global.css';
 		<title>Birthdays</title>
 	</head>
 	<body>
-    <a href="/month/">В этом месяце</a>
+    <a href="/">Сегодня</a>
     <a href="/all/">Все</a>
-    <h2>В этот день родились:</h2>
+    <h2>В этом месяце родились:</h2>
 <script>
 	import List from "list.js";
   import birth from './birth.json' assert {'content-type': 'application/json'};
@@ -23,15 +23,11 @@ import '../styles/global.css';
     }
     const birthParts = value.birthday.split(".");
     const birthMonth = parseInt(birthParts[1]);
-    const birthDay = parseInt(birthParts[0]);
-    const birthOffset = birthMonth * 100 + birthDay;
 
     const nowDate = new Date();
     const nowMonth = nowDate.getMonth() + 1;
-    const nowDay = nowDate.getDate();
-    const nowOffset = nowMonth * 100 + nowDay;
 
-    return birthOffset === nowOffset;
+    return birthMonth === nowMonth;
   }
 
 	var options = {
