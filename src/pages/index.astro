@@ -10,9 +10,49 @@ import '../styles/global.css';
 		<title>Birthdays</title>
 	</head>
 	<body>
-    <a href="/month/">В этом месяце</a>
-    <a href="/all/">Все</a>
-    <h2>В этот день родились:</h2>
+    
+    <script src="preline/dist/preline"></script>
+
+    <div class="border-b border-gray-200 dark:border-gray-700">
+      <nav class="flex space-x-2" aria-label="Tabs" role="tablist">
+        <button type="button" class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-2 border-b-[3px] border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 active" id="tabs-with-underline-item-1" data-hs-tab="#tabs-with-underline-1" aria-controls="tabs-with-underline-1" role="tab">
+          Сегодня
+        </button>
+        <button type="button" class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-2 border-b-[3px] border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600" id="tabs-with-underline-item-2" data-hs-tab="#tabs-with-underline-2" aria-controls="tabs-with-underline-2" role="tab">
+          Месяц
+        </button>
+        <button type="button" class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-2 border-b-[3px] border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600" id="tabs-with-underline-item-3" data-hs-tab="#tabs-with-underline-3" aria-controls="tabs-with-underline-3" role="tab">
+          Все
+        </button>
+      </nav>
+    </div>
+
+    <div class="mt-3">
+      <div id="tabs-with-underline-1" role="tabpanel" aria-labelledby="tabs-with-underline-item-1">
+        <p class="text-gray-500 dark:text-gray-400">
+          <h2>В этот день родились:</h2>
+          <div id="day">
+            <ul class="list"></ul>
+          </div>
+        </p>
+      </div>
+      <div id="tabs-with-underline-2" class="hidden" role="tabpanel" aria-labelledby="tabs-with-underline-item-2">
+        <p class="text-gray-500 dark:text-gray-400">
+        <h2>В этом месяце родились:</h2>
+          <div id="month">
+            <ul class="list"></ul>
+          </div>
+        </p>
+      </div>
+      <div id="tabs-with-underline-3" class="hidden" role="tabpanel" aria-labelledby="tabs-with-underline-item-3">
+        <p class="text-gray-500 dark:text-gray-400">
+        <h2>Вce:</h2>
+          <div id="all">
+            <ul class="list"></ul>
+          </div>
+        </p>
+      </div>
+    </div>
 <script>
 	import List from "list.js";
   import birth from './birth.json' assert {'content-type': 'application/json'};
@@ -40,11 +80,38 @@ import '../styles/global.css';
 };
 
 var values = birth.filter(isBirthday);
-var userList = new List('users', options, values);
+var userList = new List('day', options, values);
+
+function isBirthmonth(value) {
+    if (typeof value !== 'object') {
+        return false;
+    }
+    const birthParts = value.birthday.split(".");
+    const birthMonth = parseInt(birthParts[1]);
+
+    const nowDate = new Date();
+    const nowMonth = nowDate.getMonth() + 1;
+
+    return birthMonth === nowMonth;
+  }
+
+	var options = {
+  valueNames: [ 'name', 'birthday'],
+  item: '<li><h3 class="name"></h3><p class="birthday"></p></li>'
+};
+
+var values = birth.filter(isBirthmonth);
+var userList = new List('month', options, values);
+
+var options = {
+  valueNames: [ 'name', 'birthday'],
+  // item: '<li><h3 class="name"></h3><p class="birthday"></p></li>'
+  item: '<tbody class="list"><tr><td class="name"></td><td class="birthday"></td></tr></tbody>'
+};
+
+var userList = new List('all', options, birth);
 
 </script>
-<div id="users">
-  <ul class="list"></ul>
-</div>
+
 </body>
 </html>
