@@ -29,31 +29,25 @@ import '../styles/global.css';
 
     <div class="mt-3">
       <div id="tabs-with-underline-1" role="tabpanel" aria-labelledby="tabs-with-underline-item-1">
-        <p class="text-gray-500 dark:text-gray-400">
-          <h2>В этот день родились:</h2>
+         <h2>В этот день родились:</h2>
           <div id="day">
             <ul class="list"></ul>
           </div>
-        </p>
       </div>
       <div id="tabs-with-underline-2" class="hidden" role="tabpanel" aria-labelledby="tabs-with-underline-item-2">
-        <p class="text-gray-500 dark:text-gray-400">
         <h2>В этом месяце родились:</h2>
         <div id="month">
-          <button class="sort" data-sort="birth">
-            Sort by date
+          <button class="sort hidden" data-sort="birth">
+            Сортировать по дате
           </button>
           <ul class="list"></ul>
         </div>
-        </p>
       </div>
       <div id="tabs-with-underline-3" class="hidden" role="tabpanel" aria-labelledby="tabs-with-underline-item-3">
-        <p class="text-gray-500 dark:text-gray-400">
         <h2>Вce:</h2>
           <div id="all">
             <ul class="list"></ul>
           </div>
-        </p>
       </div>
     </div>
     
@@ -110,6 +104,7 @@ import '../styles/global.css';
             
       var valuesMonth = persons.filter(isBirthmonth);
       list = new List('month', options, valuesMonth);
+      document.querySelectorAll(".sort").forEach(button => button.click());  
     } else {
       console.log(response.status);
     }
