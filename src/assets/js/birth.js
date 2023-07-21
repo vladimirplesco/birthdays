@@ -49,13 +49,17 @@ class Birth {
 
   sortByBirth = (persons) => {
     return persons.sort((a, b) => {
-      return a.birth > b.birth;
+      if (a.birth > b.birth) return 1;
+      else if (a.birth < b.birth) return -1;
+      else return 0;
     });
   }
 
   sortByName = (persons) => {
     return persons.sort((a, b) => {
-      return a.name > b.name;
+      if (a.name > b.name) return 1;
+      else if (a.name < b.name) return -1;
+      else return 0;
     });
   }
 
