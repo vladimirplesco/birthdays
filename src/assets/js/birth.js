@@ -103,7 +103,7 @@ class Birth {
     const weekMonth = weekDate.getMonth() + 1;
     const weekDay = weekDate.getDate();
     const weekOffset = weekMonth * 100 + weekDay;
-    return (birthMonth > nowMonth) && (birthMonth < weekMonth);
+    return (birthOffset > nowOffset) && (birthOffset < weekOffset);
   }
 
 }
