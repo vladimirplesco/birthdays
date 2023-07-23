@@ -12,12 +12,26 @@ class Birth {
   }
 
   getOptions = () => {
-    return {
-      valueNames: ["name", "birth"],
-      item: `<div class="flex justify-between py-3 border-b">
-        <div class="name"></div>
-        <div class="birth"></div>
-      </div>`,
+    switch (this.id) {
+      case "all":
+        return {
+          valueNames: ["name", "birth"],
+          page: 10,
+          pagination: true,
+          item: `<div class="flex justify-between py-3 border-b">
+            <div class="name"></div>
+            <div class="birth"></div>
+          </div>`,
+        }
+        break;
+      default:
+        return {
+          valueNames: ["name", "birth"],
+          item: `<div class="flex justify-between py-3 border-b">
+            <div class="name"></div>
+            <div class="birth"></div>
+          </div>`,
+        }
     }
   }
 
