@@ -18,10 +18,11 @@ class Birth {
           valueNames: ["name", "birth"],
           page: 10,
           pagination: true,
-          item: `<div class="flex justify-between py-3 border-b">
-            <div class="name"></div>
-            <div class="birth"></div>
-          </div>`,
+          // item: `<div class="flex justify-between py-3 border-b">
+          //   <div class="name"></div>
+          //   <div class="birth"></div>
+          // </div>`,
+          item: `<li class="flex items-center space-x-2""><a class="w-10 h-10 text-gray-500 hover:text-blue-600 p-4 inline-flex items-center text-sm font-medium rounded-full" href="#"></a></li>`,
         }
         break;
       default:

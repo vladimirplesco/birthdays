@@ -1,7 +1,6 @@
 ---
 import Hero from "../components/Hero.astro";
 import Birth from "../components/Birth.astro";
-import Page from "../components/Page.astro";
 ---
 
 <html lang="ru">
@@ -15,7 +14,6 @@ import Page from "../components/Page.astro";
   <body>
     <Hero />
     <Birth />
-    <Page />
   </body>
 </html>
 
@@ -34,9 +32,8 @@ import Page from "../components/Page.astro";
   ._container-y {
     @apply py-5;
   }
-  .pagination li {
-  display:inline-block;
-  /* display:flex items-center px-4 py-2 text-gray-500 bg-gray-300 rounded-md; */
-  padding:10px;
-  }
+  /* .pagination li {
+    display:inline-block; 
+    padding:10px; 
+  } */
 </style>
