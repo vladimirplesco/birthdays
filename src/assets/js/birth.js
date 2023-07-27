@@ -16,14 +16,15 @@ class Birth {
       case "all":
         return {
           valueNames: ["name", "birth"],
+          item: `<div class="flex justify-between py-3 border-b">
+          <div class="name"></div>
+          <div class="birth"></div>
+          </div>`,
           page: 10,
-          pagination: true,
-          // item: `<div class="flex justify-between py-3 border-b">
-          //   <div class="name"></div>
-          //   <div class="birth"></div>
-          // </div>`,
-          item: `<li class="flex items-center space-x-2""><a class="w-10 h-10 text-gray-500 hover:text-blue-600 p-4 inline-flex items-center text-sm font-medium rounded-full" href="#"></a></li>`,
-        }
+          pagination: {
+          item: `<li class="group"><a class="page w-10 h-10 bg-gray-200 text-gray-800 hover:bg-blue-200 group-[.active]:bg-blue-500 group-[.active]:text-white p-4 inline-flex items-center text-sm font-medium rounded-full" href="#"></a></li>`,
+        },
+      }
         break;
       default:
         return {
