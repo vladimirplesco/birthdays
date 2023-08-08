@@ -4,12 +4,12 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
  
-require 'vendor/autoload.php';
-// echo ('before notice');
-// exit;
+//require 'vendor/autoload.php';
+require 'vendor/phpmailer/phpmailer/src/Exception.php';
+require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 include_once "notice.php"; 
-// echo ('mail_sender');
-// exit;
+echo ('mail_sender');
 if (strlen($body) > 49) {
 $mail = new PHPMailer(true);
  
