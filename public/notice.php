@@ -29,7 +29,7 @@ foreach ($filteredPersons as $person) {
   $body .= "<li>" . $person["name"] . " (" . $person["birth"] . ")</li>";
 }
 $body .= "</ul>";
-
+// nfr
 $headers = [
   "From" => $from,
   "Content-type" => "text/html"

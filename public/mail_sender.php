@@ -5,14 +5,18 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
  
 require 'vendor/autoload.php';
-include "notice.php"; 
+// echo ('before notice');
+// exit;
+include_once "notice.php"; 
+// echo ('mail_sender');
+// exit;
 if (strlen($body) > 49) {
 $mail = new PHPMailer(true);
  
 try {
     $mail->SMTPDebug = 2;                                      
     $mail->isSMTP();                                           
-    $mail->Host       = 'smtp.gmail.com;';                   
+    $mail->Host       = 'smtp.gmail.com';                   
     $mail->SMTPAuth   = true;                            
     $mail->Username   = 'vladimir.plesco@gmail.com';                
     $mail->Password   = 'kututoszflclztje';                       
