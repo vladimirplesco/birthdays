@@ -112,7 +112,8 @@ class Birth {
   }
 
   allPersons = () => {
-    return this.sortByName(this.persons);
+    // return this.sortByName(this.persons);
+    return this.persons;
   }
 
   sortByName = (persons) => {
