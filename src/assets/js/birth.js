@@ -26,16 +26,12 @@ class Birth {
     const persons = rows.map((row) => {
       const fields = row.split(",");
       const dmy = fields[1].split(".");
-      console.log(dmy);
       const date = new Date(Number(dmy[2]), Number(dmy[1]) - 1, Number(dmy[0]));
-      console.log(date);
       if (isNaN(date.getTime())) return false;
       const name = fields[0];
       const rus = this.getRusDate(date);
       const iso = this.getIsoDate(date);
-      console.log(iso);
       const birth = this.getIsoDate(date, "birth");
-      console.log(birth);
       const month = this.getIsoDate(date, "month");
       return { name: name, rus: rus, iso: iso, birth: birth, month: month };
     });
