@@ -14,11 +14,12 @@ class Birth {
     this.emptyDay = "В этот день никто не родился";
     this.emptyWeek = "В ближайшие дни никто не родился";
     this.emptyMonth = "В этом месяце никто не родился";
+    this.list = [];
   }
 
   addList = (id) => {
-    const list = new List(id, this.getOptions(id), this.filterPersons(id));
-    list.remove("iso", "0");
+    this.list[id] = new List(id, this.getOptions(id), this.filterPersons(id));
+    this.list[id].remove("iso", "0");
   }
 
   getPersons = (text) => {
@@ -101,12 +102,34 @@ class Birth {
   currentMonthPersons = () => {
     const now = new Date();
     const month = this.getIsoDate(now, "month");
+    this.selectMonth(month);
+    return this.monthPersons(month);
+  }
+
+
+  selectMonth = (month) => {
+    const select = document.querySelector("select.month");
+    if (!select) return;
+    let option;
+    for (let i = 0; i < 12; i++) {
+      option = document.createElement("option");
+      option.value = (i + 1).toString().padStart(2, "0")
+      option.text = this.getMonthName(option.value);
+      select.add(option);
+    }
+    select.value = month;
+    select.addEventListener("change", () => {
+      this.list["month"].clear();
+      this.list["month"].add(this.monthPersons(select.value));
+    });
+  }
+
+  monthPersons = (month) => {
     let persons = this.persons.filter(person => person.month === month);
     if (persons.length) {
       persons = this.sortByBirth(persons);
     } else {
-      const rus = this.getRusDate(now, "month");
-      persons = [{ name: this.emptyMonth, rus: rus }];
+      persons = [{ name: this.emptyMonth, rus: this.getMonthName(month) }];
     }
     return persons;
   }
@@ -162,7 +185,14 @@ class Birth {
       default:
         options = { day: "numeric", month: "short", year: "numeric" };
     }
-    return date.toLocaleDateString("ru-RU", options).replace(/\sг\./, "");
+    return date.toLocaleDateString("ru-RU", options).replace(" г.", "");
+  }
+
+  getMonthName = (month) => {
+    const months = [
+      "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
+    ];
+    return months[Number(month) - 1];
   }
 
 }
